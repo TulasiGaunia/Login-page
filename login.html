@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    h2 { margin-bottom: 20px; }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+    .links {
+      margin-top: 15px;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    a { color: #007bff; text-decoration: none; cursor: pointer; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+
+    <div class="links">
+      <a id="forgotUsername">Forgot Username?</a>
+      <a id="forgotPassword">Forgot Password?</a>
+      <p>Don’t have an account? <a href="signup.html">Sign up here</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Handle login
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let enteredUsername = document.getElementById("username").value;
+      let enteredPassword = document.getElementById("password").value;
+
+      let storedUsername = localStorage.getItem("username");
+      let storedPassword = localStorage.getItem("password");
+
+      if(enteredUsername === storedUsername && enteredPassword === storedPassword) {
+        alert("Login successful!");
+      } else {
+        alert("Invalid username or password!");
+      }
+    });
+
+    // Forgot Username
+    document.getElementById("forgotUsername").addEventListener("click", function() {
+      let storedUsername = localStorage.getItem("username");
+      if(storedUsername) {
+        alert("Your username is: " + storedUsername);
+      } else {
+        alert("No username found. Please sign up first.");
+      }
+    });
+
+    // Forgot Password
+    document.getElementById("forgotPassword").addEventListener("click", function() {
+      let storedPassword = localStorage.getItem("password");
+      if(storedPassword) {
+        alert("Your password is: " + storedPassword);
+      } else {
+        alert("No password found. Please sign up first.");
+      }
+    });
+  </script>
+</body>
+</html>
