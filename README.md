@@ -2,7 +2,6 @@
 
 Explore a simple login and signup system built with **HTML**, **CSS**, and **JavaScript**.
 
-**Live Demo**: [View it here](https://tulasigaunia.github.io/Login-page/)
 
 
 
